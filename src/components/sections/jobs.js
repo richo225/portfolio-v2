@@ -145,6 +145,10 @@ const StyledTabPanel = styled.div`
     ${({ theme }) => theme.mixins.fancyList};
   }
 
+  a {
+    ${({ theme }) => theme.mixins.inlineLink};
+  }
+
   h3 {
     margin-bottom: 2px;
     font-size: var(--fz-xxl);
