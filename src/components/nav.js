@@ -72,15 +72,23 @@ const StyledNav = styled.nav`
 
       &:hover,
       &:focus {
-        svg {
-          fill: var(--green-tint);
+        #logoPath {
+          stroke-dashoffset: 0;
+          stroke-dasharray: 360;
         }
       }
 
       svg {
         fill: none;
-        transition: var(--transition);
         user-select: none;
+
+        #logoPath {
+          stroke-dashoffset: -474;
+          stroke-width: 20px;
+          fill: transparent;
+          stroke: #19f6e8;
+          transition: stroke-width 1s, stroke-dashoffset 1s, stroke-dasharray 1s;
+        }
       }
     }
   }
