@@ -9,4 +9,4 @@ tech:
 showInProjects: true
 ---
 
-Basic rails JSON template to help me spin up a rails API quickly
+Basic rails JSON template to help me spin up a rails API quickly.
