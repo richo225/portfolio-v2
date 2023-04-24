@@ -23,16 +23,25 @@ const StyledLoader = styled.div`
     transition: var(--transition);
     opacity: ${props => (props.isMounted ? 1 : 0)};
     svg {
-      display: block;
       width: 100%;
       height: 100%;
+      display: grid;
+      place-items: center;
       margin: 0 auto;
       fill: none;
       user-select: none;
-      #B {
-        opacity: 0;
-      }
     }
+  }
+
+  .logo-wrapper svg {
+    fill: var(--green);
+  }
+  .logo-wrapper svg path {
+    fill: var(--green);
+  }
+  #icon-loader path {
+    fill: var(--green);
+    stroke: var(--green);
   }
 `;
 
@@ -46,10 +55,10 @@ const Loader = ({ finishLoading }) => {
     });
 
     loader
-      .add({ targets: '.sixth-rect1', translateY: 54, duration: 500 })
-      .add({ targets: '.sixth-rect2', translateX: -54, duration: 500 }, 0)
-      .add({ targets: '.sixth-rect3', translateY: -54, duration: 500 }, 0)
-      .add({ targets: '.sixth-rect4', translateX: 54, duration: 500, endDelay: 200 }, 0);
+      .add({ targets: '.rect1', translateY: 54, duration: 500 })
+      .add({ targets: '.rect2', translateX: -54, duration: 500 }, 0)
+      .add({ targets: '.rect3', translateY: -54, duration: 500 }, 0)
+      .add({ targets: '.rect4', translateX: 54, duration: 500, endDelay: 200 }, 0);
 
     loader.add({
       targets: '#icon-loader',
@@ -59,20 +68,20 @@ const Loader = ({ finishLoading }) => {
     });
 
     loader
-      .add({ targets: '.sixth-rect2', translateX: 0, duration: 500 })
-      .add({ targets: '.sixth-rect4', translateX: 0, duration: 500, endDelay: 200 }, '-=500');
+      .add({ targets: '.rect2', translateX: 0, duration: 500 })
+      .add({ targets: '.rect4', translateX: 0, duration: 500, endDelay: 200 }, '-=500');
 
     loader
-      .add({ targets: '.sixth-rect1', translateY: 0, duration: 500 })
-      .add({ targets: '.sixth-rect4', translateX: 54, duration: 500 }, '-=500');
+      .add({ targets: '.rect1', translateY: 0, duration: 500 })
+      .add({ targets: '.rect4', translateX: 54, duration: 500 }, '-=500');
 
     loader
-      .add({ targets: '.sixth-rect3', translateY: 0, duration: 500 }, '-=500')
-      .add({ targets: '.sixth-rect2', translateX: -54, duration: 500, endDelay: 200 }, '-=500');
+      .add({ targets: '.rect3', translateY: 0, duration: 500 }, '-=500')
+      .add({ targets: '.rect2', translateX: -54, duration: 500, endDelay: 200 }, '-=500');
 
     loader
-      .add({ targets: '.sixth-rect1', translateY: 54, duration: 500 })
-      .add({ targets: '.sixth-rect3', translateY: -54, duration: 500, endDelay: 200 }, '-=500');
+      .add({ targets: '.rect1', translateY: 54, duration: 500 })
+      .add({ targets: '.rect3', translateY: -54, duration: 500, endDelay: 200 }, '-=500');
 
     loader.add({
       targets: '#sixthSVG',
@@ -82,10 +91,10 @@ const Loader = ({ finishLoading }) => {
     });
 
     loader
-      .add({ targets: '.sixth-rect1', translateY: 0, duration: 500 })
-      .add({ targets: '.sixth-rect2', translateX: 0, duration: 500 }, '-=500')
-      .add({ targets: '.sixth-rect3', translateY: 0, duration: 500 }, '-=500')
-      .add({ targets: '.sixth-rect4', translateX: 0, duration: 500, endDelay: 200 }, '-=500');
+      .add({ targets: '.rect1', translateY: 0, duration: 500 })
+      .add({ targets: '.rect2', translateX: 0, duration: 500 }, '-=500')
+      .add({ targets: '.rect3', translateY: 0, duration: 500 }, '-=500')
+      .add({ targets: '.rect4', translateX: 0, duration: 500, endDelay: 200 }, '-=500');
   };
 
   useEffect(() => {
