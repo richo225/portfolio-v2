@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
+import { email } from '@config';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
 
@@ -77,8 +78,8 @@ const Hero = () => {
   );
 
   const five = (
-    <a className="email-link" href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-      Check out my CV
+    <a className="email-link" href={`mailto:${email}`}>
+      Get In Touch
     </a>
   );
 
