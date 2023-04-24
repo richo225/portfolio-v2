@@ -1,7 +1,7 @@
 import React from 'react';
 
 const IconLoader = () => (
-  <svg id="sixthSVG" viewBox="0 0 306 306" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg id="icon-loader" viewBox="0 0 306 306" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
       className="sixth-rect1"
       d="M190.032 87.987h28v75h-28v-75Z"

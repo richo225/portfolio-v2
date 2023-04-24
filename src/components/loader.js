@@ -52,7 +52,7 @@ const Loader = ({ finishLoading }) => {
       .add({ targets: '.sixth-rect4', translateX: 54, duration: 500, endDelay: 200 }, 0);
 
     loader.add({
-      targets: '#sixthSVG',
+      targets: '#icon-loader',
       duration: 500,
       rotate: 135,
       endDelay: 200,
