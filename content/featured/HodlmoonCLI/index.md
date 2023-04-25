@@ -2,8 +2,8 @@
 date: '2'
 title: 'Hodlmoon CLI'
 cover: './hodlmooncli.png'
-github: '#'
-external: '#'
+github: 'https://github.com/richo225/hodlmoon'
+external: 'https://rubygems.org/gems/hodlmoon'
 tech:
   - Ruby
   - Thor
