@@ -5,8 +5,9 @@ module.exports = {
     title: 'Richard Bates',
     description:
       'Richard Bates is a backend engineer with 6 years experience in HealthTech, FinTech and teaching',
-    siteUrl: 'https://richo225.github.io', // No trailing slash allowed!
+    siteUrl: 'https://richardbates.dev', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
+    twitterUsername: '@Meister_Bates',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
