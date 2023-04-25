@@ -6,10 +6,16 @@
 </p>
 <p align="center">
   <a href="https://app.netlify.com/sites/richardbates/deploys" target="_blank">
-    <img src="https://api.netlify.com/api/v1/badges/1963b488-7b78-48c9-9e2d-6fb5e47ab3af/deploy-status" alt="Netlify Status" />
+    <img src="https://api.netlify.com/api/v1/badges/4af0fff4-bee7-4875-8f5c-f7cadcd1bced/deploy-status" alt="Netlify Status" />
   </a>
 </p>
 
 ![demo](https://raw.githubusercontent.com/richo225/portfolio-v2/main/src/images/demo.png)
 
-<h1>
+---
+
+<br>
+
+![demo-about](https://raw.githubusercontent.com/richo225/portfolio-v2/main/src/images/demo-about.png)
+
+---
