@@ -60,8 +60,8 @@ const Contact = () => {
       <h2 className="title">Get In Touch</h2>
 
       <p>
-        I'm currently open to new opportunities, preferably remote or based in London and Singapore.
-        Whether you're looking for an engineer or have a question, drop me an emal!
+        I'm currently open to new opportunities, preferably remote or based in Singapore. Whether
+        you're looking for an engineer or have a question, drop me an email!
       </p>
 
       <a className="email-link" href={`mailto:${email}`}>
