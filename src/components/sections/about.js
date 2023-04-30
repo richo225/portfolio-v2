@@ -154,7 +154,7 @@ const About = () => {
               lecturing full-time at <a href="https://www.lewagon.com/singapore">LeWagon</a> in
               Singapore, leading students to build amazing products such as a{' '}
               <a href="https://www.soundstate.live/">spotify app using AI</a> and a{' '}
-              <a href="https://www.catchnft.club/">pokemon go clone for NFT's</a>.
+              <a href="https://catch-app.onrender.com/">pokemon go clone for NFT's</a>.
             </p>
 
             <p>
