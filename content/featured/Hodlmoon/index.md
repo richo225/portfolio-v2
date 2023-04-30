@@ -2,8 +2,8 @@
 date: '1'
 title: 'Hodlmoon'
 cover: './hodlmoon.png'
-github: '#'
-external: '#'
+github: 'https://github.com/richo225/hodlreact'
+external: 'https://hodlreact-production.up.railway.app/'
 tech:
   - ReactJS
   - Redux
@@ -12,4 +12,4 @@ tech:
   - Docker
 ---
 
-A ReactJS web app for getting the latest crypto news/market data and tracking your transaction portfolio.
+A ReactJS web app served by a [GraphQL API](https://github.com/richo225/hodlmoon_API) for getting the latest crypto news/market data and tracking your transaction portfolio.
