@@ -106,7 +106,7 @@ const StyledArticle = styled.li`
   }
 
   .article__date {
-    color: var(--light-slate);
+    color: var(--green);
     font-family: var(--font-mono);
     font-size: var(--fz-xxs);
     text-transform: uppercase;
