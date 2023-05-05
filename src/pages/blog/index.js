@@ -31,14 +31,14 @@ const StyledGrid = styled.ul`
     grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   }
 `;
-const StyledPost = styled.li`
+const StyledArticle = styled.li`
   transition: var(--transition);
   cursor: default;
 
   @media (prefers-reduced-motion: no-preference) {
     &:hover,
     &:focus-within {
-      .post__inner {
+      .article__inner {
         transform: translateY(-7px);
       }
     }
@@ -49,7 +49,7 @@ const StyledPost = styled.li`
     z-index: 1;
   }
 
-  .post__inner {
+  .article__inner {
     ${({ theme }) => theme.mixins.boxShadow};
     ${({ theme }) => theme.mixins.flexBetween};
     flex-direction: column;
@@ -67,7 +67,7 @@ const StyledPost = styled.li`
     }
   }
 
-  .post__icon {
+  .article__icon {
     ${({ theme }) => theme.mixins.flexBetween};
     color: var(--green);
     margin-bottom: 30px;
@@ -79,7 +79,7 @@ const StyledPost = styled.li`
     }
   }
 
-  .post__title {
+  .article__title {
     margin: 0 0 10px;
     color: var(--lightest-slate);
     font-size: var(--fz-xxxl);
@@ -100,19 +100,19 @@ const StyledPost = styled.li`
     }
   }
 
-  .post__desc {
+  .article__desc {
     color: var(--light-slate);
     font-size: var(--fz-xl);
   }
 
-  .post__date {
+  .article__date {
     color: var(--light-slate);
     font-family: var(--font-mono);
     font-size: var(--fz-xxs);
     text-transform: uppercase;
   }
 
-  ul.post__tags {
+  ul.article__tags {
     display: flex;
     align-items: flex-end;
     flex-wrap: wrap;
@@ -134,7 +134,7 @@ const StyledPost = styled.li`
 `;
 
 const BlogPage = ({ location, data }) => {
-  const posts = data.allMarkdownRemark.edges;
+  const articles = data.allMarkdownRemark.edges;
 
   return (
     <Layout location={location}>
@@ -147,28 +147,28 @@ const BlogPage = ({ location, data }) => {
         </header>
 
         <StyledGrid>
-          {posts.length > 0 &&
-            posts.map(({ node }, i) => {
+          {articles.length > 0 &&
+            articles.map(({ node }, i) => {
               const { frontmatter } = node;
               const { title, description, slug, date, tags } = frontmatter;
               const formattedDate = new Date(date).toLocaleDateString();
 
               return (
-                <StyledPost key={i}>
-                  <div className="post__inner">
+                <StyledArticle key={i}>
+                  <div className="article__inner">
                     <header>
-                      <div className="post__icon">
+                      <div className="article__icon">
                         <IconBookmark />
                       </div>
-                      <h5 className="post__title">
+                      <h5 className="article__title">
                         <Link to={slug}>{title}</Link>
                       </h5>
-                      <p className="post__desc">{description}</p>
+                      <p className="article__desc">{description}</p>
                     </header>
 
                     <footer>
-                      <span className="post__date">{formattedDate}</span>
-                      <ul className="post__tags">
+                      <span className="article__date">{formattedDate}</span>
+                      <ul className="article__tags">
                         {tags.map((tag, i) => (
                           <li key={i}>
                             <Link to={`/blog/tags/${kebabCase(tag)}/`} className="inline-link">
@@ -179,7 +179,7 @@ const BlogPage = ({ location, data }) => {
                       </ul>
                     </footer>
                   </div>
-                </StyledPost>
+                </StyledArticle>
               );
             })}
         </StyledGrid>
@@ -199,7 +199,7 @@ export const pageQuery = graphql`
   {
     allMarkdownRemark(
       filter: {
-        fileAbsolutePath: { regex: "/content/posts/" }
+        fileAbsolutePath: { regex: "/content/articles/" }
         frontmatter: { draft: { ne: true } }
       }
       sort: { fields: [frontmatter___date], order: DESC }

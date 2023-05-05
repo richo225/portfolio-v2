@@ -6,16 +6,16 @@ import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Layout } from '@components';
 
-const StyledPostContainer = styled.main`
+const StyledArticleContainer = styled.main`
   max-width: 1000px;
 `;
-const StyledPostHeader = styled.header`
+const StyledArticleHeader = styled.header`
   margin-bottom: 50px;
   .tag {
     margin-right: 10px;
   }
 `;
-const StyledPostContent = styled.div`
+const StyledArticleContent = styled.div`
   margin-bottom: 100px;
   h1,
   h2,
@@ -50,7 +50,7 @@ const StyledPostContent = styled.div`
   }
 `;
 
-const PostTemplate = ({ data, location }) => {
+const ArticleTemplate = ({ data, location }) => {
   const { frontmatter, html } = data.markdownRemark;
   const { title, date, tags } = frontmatter;
 
@@ -58,13 +58,13 @@ const PostTemplate = ({ data, location }) => {
     <Layout location={location}>
       <Helmet title={title} />
 
-      <StyledPostContainer>
+      <StyledArticleContainer>
         <span className="breadcrumb">
           <span className="arrow">&larr;</span>
           <Link to="/blog">All articles</Link>
         </span>
 
-        <StyledPostHeader>
+        <StyledArticleHeader>
           <h1 className="medium-heading">{title}</h1>
           <p className="subtitle">
             <time>
@@ -83,17 +83,17 @@ const PostTemplate = ({ data, location }) => {
                 </Link>
               ))}
           </p>
-        </StyledPostHeader>
+        </StyledArticleHeader>
 
-        <StyledPostContent dangerouslySetInnerHTML={{ __html: html }} />
-      </StyledPostContainer>
+        <StyledArticleContent dangerouslySetInnerHTML={{ __html: html }} />
+      </StyledArticleContainer>
     </Layout>
   );
 };
 
-export default PostTemplate;
+export default ArticleTemplate;
 
-PostTemplate.propTypes = {
+ArticleTemplate.propTypes = {
   data: PropTypes.object,
   location: PropTypes.object,
 };
