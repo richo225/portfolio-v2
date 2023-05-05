@@ -22,7 +22,7 @@ const StyledMainContainer = styled.main`
 const StyledGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(750px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   grid-gap: 35px;
   margin-top: 50px;
   position: relative;
@@ -56,7 +56,7 @@ const StyledPost = styled.li`
     align-items: flex-start;
     position: relative;
     height: 100%;
-    padding: 2rem 1.75rem;
+    padding: 2.5rem;
     border-radius: var(--border-radius);
     transition: var(--transition);
     background-color: var(--light-navy);
@@ -82,7 +82,7 @@ const StyledPost = styled.li`
   .post__title {
     margin: 0 0 10px;
     color: var(--lightest-slate);
-    font-size: var(--fz-xxl);
+    font-size: var(--fz-xxxl);
 
     a {
       position: static;
@@ -102,7 +102,7 @@ const StyledPost = styled.li`
 
   .post__desc {
     color: var(--light-slate);
-    font-size: 17px;
+    font-size: var(--fz-xl);
   }
 
   .post__date {
