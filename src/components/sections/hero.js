@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
-import { email } from '@config';
+import { Link } from 'gatsby';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
 
@@ -78,9 +78,9 @@ const Hero = () => {
   );
 
   const five = (
-    <a className="email-link" href={`mailto:${email}`}>
-      Get In Touch
-    </a>
+    <Link to="/blog" class="email-link">
+      Check out my blog
+    </Link>
   );
 
   const items = [one, two, three, four, five];
