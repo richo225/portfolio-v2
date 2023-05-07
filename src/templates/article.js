@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import { Layout } from '@components';
 
 const StyledArticleContainer = styled.main`
-  max-width: 1000px;
+  max-width: 1100px;
 `;
 const StyledArticleHeader = styled.header`
   margin-bottom: 50px;
