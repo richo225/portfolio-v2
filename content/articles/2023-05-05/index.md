@@ -1,5 +1,5 @@
 ---
-title: Build a ChatGPT CLI
+title: Build a ChatGPT CLI 🤖
 description: Build a ruby gem that allows you to interact with the ChatGPT API from the command line.
 date: 2023-05-05
 draft: false
@@ -10,15 +10,19 @@ tags:
   - Gem
 ---
 
-ChatGPT is taking the world by storm and could be considered one of the biggest innovations in the tech scene in the past few years. If you haven't already tried it out, head over to https://chat.openai.com and sign up. The API can take a variety of inputs ranging from:
+If you haven't had the chance to try out ChatGPT yet, it's time to come out from under that rock. This AI marvel is one of the most innovative tools we've seen in years and has taken the tech world by storm!
 
-> What is the capital of Taiwan?
+If you haven't checked it out yet, head over to https://chat.openai.com and sign up. ChatGPT is capable of replying to a variety of prompts, from
 
-all the way to
+> "What is 12 \* 12?"
 
-> Please write me a CV section in three bullet points for my time working at a fintech called blah where I was a software engineer working on blah.
+to
 
-Wouldn't it be great if we could access this API from the comfort of our command line instead of via the chatGPT website; we are software engineers after all! In this blog post, we're going to first walk through how to connect to the chatGPT API with some ruby code and then finally convert the code into a publishable gem that you can share with the community.
+> "In a dystopian future, humanity has abandoned Earth and terraformed Mars, creating a new utopia. However, a group of rebels emerges, fighting for the right to return to their home planet. Write a story exploring the ethical dilemmas and consequences of this conflict."
+
+But why should we limit ourselves to using ChatGPT only through the website? Wouldn't it be great if we could access this API from the comfort of our command line? We are software engineers, after all!
+
+In this blog post, I'm going to first walk through how to connect to the chatGPT API with some ruby code and then finally convert the code into a publishable gem that you can share with the community and run from anywhere in your terminal.
 
 ## Getting access to the API
 
@@ -26,7 +30,7 @@ Before we can start making requests to the ChatGPT API, we need an API key for a
 
 ## Interacting with ChatGPT
 
-The OpenAI team provide quite a few endpoints but the one we're interested in is `chat` at https://api.openai.com/v1/chat/completions. Below is an example curl request to this API:
+The OpenAI team provides quite a few endpoints, but the one we're interested in is `chat` at https://api.openai.com/v1/chat/completions. Below is an example curl request to this API:
 
 ```shell{outputLines: 2-8}{promptUser: rich}{promptHost: localhost}
 curl https://api.openai.com/v1/chat/completions \
@@ -40,7 +44,7 @@ curl https://api.openai.com/v1/chat/completions \
 
 ```
 
-In this code, we are making a HTTP POST request to https://api.openai.com/v1/chat/completions, passing in our created API key in the header as well as body parameters for the `model`, `temperature` as well as `messages` ie. our prompt. You can see the JSON response we get back below - note the ChatGPT response nested inside `"choices"[0]["message"]["content"]` :
+In this code, we are making an HTTP POST request to https://api.openai.com/v1/chat/completions, passing in the API key we created in the header as well as body parameters for the `model`, `temperature` as well as `messages` ie. our prompt. You can see the JSON response we get back below - note the ChatGPT response nested inside `"choices"[0]["message"]["content"]` :
 
 ```JSON
 {
@@ -68,7 +72,7 @@ In this code, we are making a HTTP POST request to https://api.openai.com/v1/cha
 
 ## Creating our own ruby gem
 
-To begin making our own ruby gem that will utilise ruby-openai, first make sure you have bundler installed with `bundle -v` and then create your gem with whatever name you want:
+To start creating your own Ruby gem that utilizes ruby-openai, make sure you have bundler installed by running `bundle -v`. Then, create your gem with any name you desire using the following command:
 
 ```shell{promptUser: rich}{promptHost: localhost}
 bundle gem <YOUR_GEM_NAME>
@@ -76,11 +80,11 @@ cd <YOUR_GEM_NAME>
 
 ```
 
-Bundler will then ask you for some extra configuration before it creates your gem directory. We won't be writing any tests or configuring a CI in this blog, but it is good practice to initialise them if ever required in the future. You should therefore pick the following configurations:
+After running this command, bundler will prompt you to configure some extra settings before creating your gem directory. While we won't be writing tests or setting up a CI in this blog post, it's good practice to initialize them in case you need them in the future. You should therefore choose the following configurations:
 
 ![Bundle Gem Setup](./bundle_gem.png)
 
-Once you have selected all the configurations, bundler will then create a new directory with the following files and initialise a git repository. Note that going forward I am providing snippets from my created gem called `chatgpt`:
+After selecting your desired configurations, bundler will create a new directory with the necessary files and initialize a git repository. Going forward, I will be providing code snippets from my own created gem called `chatgpt`.
 
 ---
 
@@ -108,15 +112,15 @@ Once you have selected all the configurations, bundler will then create a new di
 
 ## Exploring the gem directory
 
-As you can see the directory looks very similar to a normal ruby program that you have hopefully built before:
+As you can see, the directory looks very similar to a normal Ruby program that you have hopefully built before:
 
-- `Rakefile` => Any rake tasks we need to run can be written here. Bundler has already added the `build`, `install` and `release` tasks
-- `Gemfile` => Specifies any gems depended on by your library. We will add these to the `.gemspec` instead which can be seen loaded in the `gemspec` line
-- `spec` => Contains any tests that we write
-- `lib/blog_chatgpt.rb` => This is the main file to define our code. It is required by Bundler when your gem is loaded
-- `lib/blog_chatgpt` => Contains any other business logic such as classes or clients required by `lib/blog_chatgpt.rb`
+- `Rakefile` => Any rake tasks we need to run can be written here. Bundler has already added the `build`, `install` and `release` tasks.
+- `Gemfile` => Specifies any gems depended on by your library. We will add these to the `.gemspec` instead, which can be seen loaded in the `gemspec` line.
+- `spec` => Contains any tests that we write.
+- `lib/blog_chatgpt.rb` => This is the main file to define our code. It is required by Bundler when your gem is loaded.
+- `lib/blog_chatgpt` => Contains any other business logic such as classes or clients required by `lib/blog_chatgpt.rb`.
 
-One of the most important files which you will not see in normal ruby programs is the `.gemspec`. Let's take a look at this file and go through the changes that need to be made. The gemspec contains information and any other metadata regarding your gem. Take a look at any popular gem hosted on rubygems such as [Rails](https://rubygems.org/gems/rails) and you will see that the `name`, `version`, `authors`, `summary`, `homepage` and others can be seen on the rubygems page; these are all coming from the `.gemspec`!
+One of the most important files for a Ruby gem that you won't see in normal Ruby programs is the `.gemspec` file. The gemspec contains information and metadata regarding your gem, such as its name, version, authors, summary, homepage, and more. If you take a look at any popular gem hosted on RubyGems, such as [Rails](https://rubygems.org/gems/rails), you will see that the information displayed on the gem's page, including its `name`, `version`, `authors`, `summary`, and `homepage`, all comes from the `.gemspec` file.
 
 Go through this file and update it accordingly with your details as the author. `homepage`, `source_code_uri` and `changelog_uri` can be left blank for now as we have not yet published the git repository or ruby gem. You will end up with something like below:
 
@@ -146,7 +150,7 @@ Gem::Specification.new do |spec|
 end
 ```
 
-Once done, we should run `bin/setup` to generate a `Gemfile.lock`, commit and push to a repository you should have created on Github:
+After completing this step, run `bin/setup` to generate a `Gemfile.lock`. Then, commit the changes and push them to a GitHub repository that you have created."
 
 ```shell{promptUser: rich}{promptHost: master}
 bin/setup
@@ -159,11 +163,11 @@ git push -u origin master
 
 ## Using the Ruby OpenAI gem
 
-Now let's code the juicy part of our gem!
+Now it's time to write the meat of our gem!
 
-Earlier we successfully interacted with the ChatGPT API and whilst we could make this HTTP request via ruby using any old http client, someone has already built a wrapper for us - [Ruby OpenAI](https://github.com/alexrudall/ruby-openai). This gem provides abstractions for all the OpenAI endpoints, is highly configurable and includes some extra functionality such as streaming. To make the same request from before with the gem, we can simply call `client.chat()`.
+Earlier, we interacted successfully with the ChatGPT API, and while we could make the HTTP request using any old HTTP client in Ruby, someone has already built a wrapper for us - [Ruby OpenAI](https://github.com/alexrudall/ruby-openai). This gem abstracts all the OpenAI endpoints, is highly configurable, and includes extra functionality like streaming. To make the same request as before using the gem, we can simply call `client.chat()`.
 
-We need to add `ruby-openai` as a dependency so that when people install our gem, they must also install ruby-openai for it work. To do this, add `ruby-openai` to your gem specification:
+We need to add `ruby-openai` as a dependency, so when people install our gem, they must also install `ruby-openai` for it to work. To do this, add `ruby-openai` to your gem specification:
 
 ```ruby{numberLines: 23}
 spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
@@ -173,7 +177,7 @@ spec.add_dependency 'ruby-openai', '~> 4.0' # highlight-line
 
 ```
 
-Then we run `bin/setup` to install the `ruby-openai` gem and update the `.Gemfile.lock`. Commit this:
+After adding `ruby-openai` as a dependency, we need to run `bin/setup` to install the gem and update the `.Gemfile.lock`. Then, we should commit the changes to the repository we created on Github. Here's how to do it:
 
 ```shell{promptUser: rich}{promptHost: master}
 bin/setup
@@ -182,7 +186,7 @@ git commit -m "Adds ruby-openai gem dependency"
 git push origin master
 ```
 
-Now inside of your `lib/YOUR_GEM_NAME.rb` file, we are going to add the ruby code for making a request to ChatGPT and printing it out to the terminal. Firstly we need to require the `ruby-openai` gem we just added as a dependency and initialise the client with our API key.
+Now, we will add the Ruby code for making a request to ChatGPT and printing it out to the terminal inside your `lib/YOUR_GEM_NAME.rb` file. Firstly, we should require the `ruby-openai` gem that we added as a dependency earlier and initialize the client with our API key.
 
 ```ruby:title=lib/chatgpt.rb
 # frozen_string_literal: true
@@ -200,7 +204,7 @@ module Chatgpt
 end
 ```
 
-Because we are going to publish this source code to github and via RubyGems, we don't want to make our own api key visible and usable by every user who installs the gem. To fix this, we are going to replace the api key with an environment variable `ENV["OPENAI_API_KEY"]` that the user must set for themselves. We also create our own custom error called `MissingAPiKeyError` and raise it before initialising the client if the user has not set the environment variable:
+Because we are going to publish this source code to Github and via RubyGems, it is important that we do not include our own API key, as users who install the gem would then have access to our account. Therefore, we will replace the API key with an environment variable `ENV["OPENAI_API_KEY"]` that the user must set for themselves, and create a custom error called `MissingApiKeyError` which will be raised if the user has not set the environment variable.
 
 ```diff{numberLines: 6}
 -  class Error < StandardError; end
@@ -254,7 +258,7 @@ Now that we have the client initialised, we can begin making the request to Chat
 end
 ```
 
-Here we take the response from the ChatGPT API, pull out the value at the `"content"` key and print it out to the terminal. Now is a good time to test out this code by running the ruby file within the lib directory via `ruby lib/<YOUR_GEM_NAME>.rb`. You can see the full response printed out below as well as the content returned:
+Here, we retrieve the response from the ChatGPT API and extract the value at the `"content"` key, which is then displayed on the terminal. At this point, it's recommended to test the code by running the ruby file within the lib directory using the command `ruby lib/<YOUR_GEM_NAME>.rb`. You will see the full response printed out below, along with the content that was returned.
 
 ![Running the program](./gem_in_action.png)
 
@@ -268,7 +272,7 @@ git push origin master
 
 ## Continuous prompts and streaming
 
-The current code is working correctly but it exits after a response is received from ChatGPT. To keep asking the user for inputs, we put the code inside of a loop and break the loop if the user types in `exit`. To speed up printing the output, the ruby-openai gem supports [streaming from the API in realtime](https://github.com/alexrudall/ruby-openai#streaming-chatgpt).
+The current code is functional, but it only takes one input from the user and then exits. To allow the user to provide multiple inputs, we'll wrap the code in a loop and only break out of it when the user types `exit`. Additionally, we can improve the speed at which the output is printed by using the [real-time streaming feature](https://github.com/alexrudall/ruby-openai#streaming-chatgpt) of the ruby-openai gem.
 
 ```ruby{numberLines: 4}{1,2,5,18, 12-14}
 loop do
@@ -292,9 +296,9 @@ loop do
 end
 ```
 
-The new `stream` parameter takes a `proc` that receives the stream of text chunks back from ChatGPT as they are generated. A Proc is just a block of code that can be assigned to a variable or passed around. Each time one or more text chunks is received, the Proc will be called once with each chunk. The Proc then parses the chunk as a Hash and we print out the `content` within this Hash.
+The new `stream` parameter takes a `proc` that receives the stream of text chunks back from ChatGPT as they are generated. Proc is a block of code that can be assigned to a variable or passed around. Each time one or more text chunks are received, the Proc is called once with each chunk. The Proc then parses the chunk as a Hash, and we print out the `content` within this Hash.
 
-We can test this beautiful new code via the interactive ruby console, `IRB`. Run the `bin/console` executable which will run any setup, require our ruby file and load up the interpreter:
+To test this beautiful new code, we can use the interactive ruby console, `IRB`. Run the `bin/console` executable which will run any setup, require our ruby file, and load up the interpreter:
 
 ```shell{promptUser: rich}{promptHost: master}
 bin/console
@@ -303,7 +307,7 @@ bin/console
 
 ## Sign up with RubyGems
 
-We now have a fully working gem but how do we share it? We could publish the repository on Github and have everyone clone it down, run `bundle install` and then `ruby lib/<YOUR_GEM_NAME>.rb`. But then what's been the point so far in setting up this package when we could have simply shared a single ruby file! We're instead going to package this source code into a gem and publish it to rubygems so that others only need to type `gem install <YOUR_GEM_NAME>` and then run it via `<YOUR_GEM_NAME>`.
+We now have a fully working gem, but how can we share it? We could publish the repository on Github and have everyone clone it down, run `bundle install`, and then `ruby lib/<YOUR_GEM_NAME>.rb`.But then, what was the purpose of all this effort in creating a package if we were just going to share a single Ruby file? We're instead going to package this source code into a gem and publish it to RubyGems so that others only need to type `gem install <YOUR_GEM_NAME>` and then run it via `<YOUR_GEM_NAME>`.
 
 The first thing we're going to do is commit the code we have so far via:
 
@@ -335,9 +339,9 @@ We can then install this gem using `gem install`
 gem install chagpt-0.1.0.gem
 ```
 
-However, if you type <YOUR_GEM_NAME> you will get a `command not found` error which is not good for users as we want them to be able to run the gem from wherever in the terminal. To make the gem available, we need to create an `executable` file in the `bin` directory and link it in our gem specification.
+However, if you try to run your gem using <YOUR_GEM_NAME>, you will get a `command not found` error which can be frustrating for users who want to run your gem from anywhere in their terminal. To make the gem available, we need to create an `executable` file in the `bin` directory and link it in our gem specification.
 
-Create a new file inside the `bin` directory called `YOUR_GEM_NAME`, require the setup executable and then require the ruby code that is doing the heavy lifting.
+To do this, create a new file inside the `bin` directory with the name of your gem, `<YOUR_GEM_NAME>`. In this file, require the setup executable and then require the ruby code that is doing the heavy lifting.
 
 ```ruby:title=/bin/chatgpt
 #!/usr/bin/env ruby
@@ -372,11 +376,11 @@ git push origin master
 
 ## Gem versioning
 
-The keen eyed of you may have spotted the `<YOUR_GEM_NAME>::VERSION` constant inside the gem specification earlier. This constant is defined in your `lib/YOUR_GEM_NAME/version.rb` and right now should have a value of `0.1.0`. This is an example of something called [semantic versioning](https://semver.org/) which is essentially a set of rules and requirements that decide how version numbers should be constructed. A version will be made up of three parts, `major`, `minor` and `patch` forming the full version of `major.minor.patch`. Therefore our gem currently has a minor version of 1 and 0 for major and patch.
+The `<YOUR_GEM_NAME>::VERSION` constant inside the gem specification earlier may have caught your attention. It is defined in your `lib/YOUR_GEM_NAME/version.rb` and currently has a value of `0.1.0`. This is an example of something called [semantic versioning](https://semver.org/) which has a set of rules and requirements for constructing version numbers. A version consists of three parts: `major`, `minor`, and `patch`, forming the full version of `major.minor.patch`. Therefore, our gem currently has a minor version of 1 and 0 for major and patch.
 
-Because our gem has not yet been published to rubygems, we do not need to change the version from `0.1.0`. Any user who installs our gem will not need to worry about which version to install as there will only be one.
+Since our gem has not been published to RubyGems yet, there is no need to change the version from `0.1.0`. Any user who installs our gem will not have to worry about which version to install since there will be only one.
 
-Before we go on and publish this gem version, now is a good time to add a `git tag` to the latest commit to indicate which part of our code history is a specific version and then push it up to github.
+Before we move forward with publishing this gem version, it is a good time to add a `git tag` to the latest commit to indicate which part of our code history is a specific version and then push it up to GitHub.
 
 ```shell{promptUser: rich}{promptHost: master}
 git tag -a v0.1.0 -m "Initial v0.1.0"
@@ -393,7 +397,7 @@ gem push <YOUR_GEM_NAME>-0.1.0.gem
 # input your rubygems credentials when prompted
 ```
 
-Now go to https://rubygems.org/ and search for your gem. If all went well, you should see your newly created gem page with all of the correct gem specifications as well as a single listed version of `0.1.0`.
+Head over to https://rubygems.org/ and search for your gem. If everything went smoothly, you should be able to see your newly created gem page, complete with all the correct specifications and a single version listed as 0.1.0. From here, anyone can easily install your gem by simply running `gem install <YOUR_GEM_NAME>`.
 
 ## Making changes to your gem
 
@@ -414,7 +418,7 @@ git commit -m "Changes desired model from gpt-3.5-turbo to gpt-2.5"
 git push origin master
 ```
 
-This may not seem like a serious change but you have to think about the users who are installing your gem. We have completely changed the API request we are making to ChatGPT and therefore the potential response that comes back. The contents of `0.1.0` MUST NOT be modified as per the rules and therefore we need to release our updated gem under a new version.
+This change may seem small, but it can have significant implications for users dependent on the gem with the previous version of the ChatGPT model. It's crucial to follow the semver rules when releasing an updated gem version, as it allows users to understand the implications of upgrading to the new version. The contents of `0.1.0` MUST NOT be modified as per the rules, and thus we need to release our updated gem under a new version.
 
 But what version do we change it to? Is this a major change, a minor or a patch? The semver rules state:
 
@@ -422,7 +426,7 @@ But what version do we change it to? Is this a major change, a minor or a patch?
 > 2. MINOR version when you add functionality in a backwards compatible manner
 > 3. PATCH version when you make backwards compatible bug fixes
 
-The change we have made is backward compatible as someone could switch gem versions and it would still work without errors, so therefore we are going to bump our gem version from `0.1.0` to `0.2.0`. To do this, simply change the value of `<YOUR_GEM_NAME>::VERSION` in the `lib/YOUR_GEM_NAME/version.rb` file. We then update the Gemfile.lock gem version via bundle install, commit the changes and tag the commit:
+In this case, the change from gpt-3.5-turbo to gpt-2.5 IS backward compatible and won't break any code. As a result, we will make a minor version change and update the gem version from `0.1.0` to `0.2.0`. To do this, simply change the value of the `<YOUR_GEM_NAME>::VERSION` constant in the `lib/YOUR_GEM_NAME/version.rb` file. We then update the `Gemfile.lock` gem version via `bundle install`, commit the changes and tag the commit:
 
 ```diff:title=lib/chatgpt/version.rb
 module Chatgpt
@@ -462,9 +466,9 @@ And run it from wherever you are in the terminal via:
 
 There are many more features we could add to this gem in the future:
 
-- Perhaps a user wants to interact with other OpenAI endpoints and could therefore pass in cli arguments or flags? The [Thor toolkit](https://github.com/rails/thor) is amazing at this and will allow us to build a version of our gem on steroids!
-- Add tests for existing functionality
-- Use the existing bundler rake tasks for publishing to RubyGems
-- Add a CI pipeline
+- Want to supercharge your gem and let users interact with other OpenAI endpoints using CLI arguments or flags? The [Thor toolkit](https://github.com/rails/thor) has got your back and can take your gem to the next level!
+- Don't forget to add tests for the existing functionality. We all love a bug-free gem, right?
+- You can also use the existing bundler rake tasks for publishing to RubyGems. Will save you some time!
+- Finally, you can make your gem even more awesome by adding a CI pipeline. This will help you catch issues early on and ensure your gem is always in tip-top shape.
 
-I will leave these features off for you to play around with and perhaps I'll cover them in a separate article down the line. I hope you enjoyed reading this and are empowered to build more ruby gems to share! The source code can be found at [this github repository](https://github.com/richo225/ruby-chatgpt) and the published gem at [this ruby gems page](https://rubygems.org/gems/ruby-chatgpt).
+I hope you found this article helpful, and that it inspires you to build and share more Ruby gems! If you're curious, the source code is available on [GitHub](https://github.com/richo225/ruby-chatgpt) and the published gem can be found on [RubyGems](https://rubygems.org/gems/ruby-chatgpt).
