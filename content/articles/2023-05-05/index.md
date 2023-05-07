@@ -466,9 +466,9 @@ And run it from wherever you are in the terminal via:
 
 There are many more features we could add to this gem in the future:
 
-- Want to supercharge your gem and let users interact with other OpenAI endpoints using CLI arguments or flags? The [Thor toolkit](https://github.com/rails/thor) has got your back and can take your gem to the next level!
+- Want to supercharge your gem and let users interact with other OpenAI endpoints using CLI arguments or flags? The [Thor toolkit](https://github.com/rails/thor) has got your back.
 - Don't forget to add tests for the existing functionality. We all love a bug-free gem, right?
-- You can also use the existing bundler rake tasks for publishing to RubyGems. Will save you some time!
+- You can also use the existing bundler rake tasks for publishing to RubyGems.
 - Finally, you can make your gem even more awesome by adding a CI pipeline. This will help you catch issues early on and ensure your gem is always in tip-top shape.
 
 I hope you found this article helpful, and that it inspires you to build and share more Ruby gems! If you're curious, the source code is available on [GitHub](https://github.com/richo225/ruby-chatgpt) and the published gem can be found on [RubyGems](https://rubygems.org/gems/ruby-chatgpt).
