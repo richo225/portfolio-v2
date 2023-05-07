@@ -9,13 +9,13 @@ const _ = require('lodash');
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
-  const postTemplate = path.resolve(`src/templates/post.js`);
+  const articleTemplate = path.resolve(`src/templates/article.js`);
   const tagTemplate = path.resolve('src/templates/tag.js');
 
   const result = await graphql(`
     {
-      postsRemark: allMarkdownRemark(
-        filter: { fileAbsolutePath: { regex: "/content/posts/" } }
+      articlesRemark: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/articles/" } }
         sort: { order: DESC, fields: [frontmatter___date] }
         limit: 1000
       ) {
@@ -41,13 +41,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return;
   }
 
-  // Create post detail pages
-  const posts = result.data.postsRemark.edges;
+  // Create article detail pages
+  const articles = result.data.articlesRemark.edges;
 
-  posts.forEach(({ node }) => {
+  articles.forEach(({ node }) => {
     createPage({
       path: node.frontmatter.slug,
-      component: postTemplate,
+      component: articleTemplate,
       context: {},
     });
   });
@@ -57,7 +57,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   // Make tag pages
   tags.forEach(tag => {
     createPage({
-      path: `/pensieve/tags/${_.kebabCase(tag.fieldValue)}/`,
+      path: `/blog/tags/${_.kebabCase(tag.fieldValue)}/`,
       component: tagTemplate,
       context: {
         tag: tag.fieldValue,

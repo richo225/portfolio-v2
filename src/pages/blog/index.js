@@ -11,15 +11,6 @@ const StyledMainContainer = styled.main`
   & > header {
     margin-bottom: 100px;
     text-align: center;
-
-    a {
-      &:hover,
-      &:focus {
-        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>⚡</text></svg>")
-            20 0,
-          auto;
-      }
-    }
   }
 
   footer {
@@ -31,23 +22,23 @@ const StyledMainContainer = styled.main`
 const StyledGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  grid-gap: 35px;
   margin-top: 50px;
   position: relative;
 
   @media (max-width: 1080px) {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   }
 `;
-const StyledPost = styled.li`
+const StyledArticle = styled.li`
   transition: var(--transition);
   cursor: default;
 
   @media (prefers-reduced-motion: no-preference) {
     &:hover,
     &:focus-within {
-      .post__inner {
+      .article__inner {
         transform: translateY(-7px);
       }
     }
@@ -58,14 +49,14 @@ const StyledPost = styled.li`
     z-index: 1;
   }
 
-  .post__inner {
+  .article__inner {
     ${({ theme }) => theme.mixins.boxShadow};
     ${({ theme }) => theme.mixins.flexBetween};
     flex-direction: column;
     align-items: flex-start;
     position: relative;
     height: 100%;
-    padding: 2rem 1.75rem;
+    padding: 2.5rem;
     border-radius: var(--border-radius);
     transition: var(--transition);
     background-color: var(--light-navy);
@@ -76,7 +67,7 @@ const StyledPost = styled.li`
     }
   }
 
-  .post__icon {
+  .article__icon {
     ${({ theme }) => theme.mixins.flexBetween};
     color: var(--green);
     margin-bottom: 30px;
@@ -88,10 +79,10 @@ const StyledPost = styled.li`
     }
   }
 
-  .post__title {
+  .article__title {
     margin: 0 0 10px;
     color: var(--lightest-slate);
-    font-size: var(--fz-xxl);
+    font-size: var(--fz-xxxl);
 
     a {
       position: static;
@@ -109,19 +100,19 @@ const StyledPost = styled.li`
     }
   }
 
-  .post__desc {
+  .article__desc {
     color: var(--light-slate);
-    font-size: 17px;
+    font-size: var(--fz-xl);
   }
 
-  .post__date {
-    color: var(--light-slate);
+  .article__date {
+    color: var(--green);
     font-family: var(--font-mono);
     font-size: var(--fz-xxs);
     text-transform: uppercase;
   }
 
-  ul.post__tags {
+  ul.article__tags {
     display: flex;
     align-items: flex-end;
     flex-wrap: wrap;
@@ -142,49 +133,45 @@ const StyledPost = styled.li`
   }
 `;
 
-const PensievePage = ({ location, data }) => {
-  const posts = data.allMarkdownRemark.edges;
+const BlogPage = ({ location, data }) => {
+  const articles = data.allMarkdownRemark.edges;
 
   return (
     <Layout location={location}>
-      <Helmet title="Pensieve" />
+      <Helmet title="Blog" />
 
       <StyledMainContainer>
         <header>
-          <h1 className="big-heading">Pensieve</h1>
-          <p className="subtitle">
-            <a href="https://www.wizardingworld.com/writing-by-jk-rowling/pensieve">
-              a collection of memories
-            </a>
-          </p>
+          <h1 className="big-heading">Blog</h1>
+          <p className="subtitle">Some articles that I have written</p>
         </header>
 
         <StyledGrid>
-          {posts.length > 0 &&
-            posts.map(({ node }, i) => {
+          {articles.length > 0 &&
+            articles.map(({ node }, i) => {
               const { frontmatter } = node;
               const { title, description, slug, date, tags } = frontmatter;
               const formattedDate = new Date(date).toLocaleDateString();
 
               return (
-                <StyledPost key={i}>
-                  <div className="post__inner">
+                <StyledArticle key={i}>
+                  <div className="article__inner">
                     <header>
-                      <div className="post__icon">
+                      <div className="article__icon">
                         <IconBookmark />
                       </div>
-                      <h5 className="post__title">
+                      <h5 className="article__title">
                         <Link to={slug}>{title}</Link>
                       </h5>
-                      <p className="post__desc">{description}</p>
+                      <p className="article__desc">{description}</p>
                     </header>
 
                     <footer>
-                      <span className="post__date">{formattedDate}</span>
-                      <ul className="post__tags">
+                      <span className="article__date">{formattedDate}</span>
+                      <ul className="article__tags">
                         {tags.map((tag, i) => (
                           <li key={i}>
-                            <Link to={`/pensieve/tags/${kebabCase(tag)}/`} className="inline-link">
+                            <Link to={`/blog/tags/${kebabCase(tag)}/`} className="inline-link">
                               #{tag}
                             </Link>
                           </li>
@@ -192,7 +179,7 @@ const PensievePage = ({ location, data }) => {
                       </ul>
                     </footer>
                   </div>
-                </StyledPost>
+                </StyledArticle>
               );
             })}
         </StyledGrid>
@@ -201,17 +188,20 @@ const PensievePage = ({ location, data }) => {
   );
 };
 
-PensievePage.propTypes = {
+BlogPage.propTypes = {
   location: PropTypes.object.isRequired,
   data: PropTypes.object.isRequired,
 };
 
-export default PensievePage;
+export default BlogPage;
 
 export const pageQuery = graphql`
   {
     allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/content/posts/" }, frontmatter: { draft: { ne: true } } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/articles/" }
+        frontmatter: { draft: { ne: true } }
+      }
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

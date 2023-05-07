@@ -186,7 +186,7 @@ const Nav = ({ isHome }) => {
       href="/Richard-Bates-CV.pdf"
       target="_blank"
       rel="noopener noreferrer">
-      Download CV
+      Resume
     </a>
   );
 

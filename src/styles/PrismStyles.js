@@ -52,6 +52,24 @@ const PrismStyles = css`
   * 2. Always fill the visible space in .gatsby-highlight.
   * 3. Adjust the position of the line numbers
   */
+
+  /* Command line prompts */
+  .command-line-prompt > span:before {
+    color: #999;
+    content: ' ';
+    display: block;
+    padding-right: 0.8em;
+  }
+
+  /* Prompt for all users */
+  .command-line-prompt > span[data-user]:before {
+    content: '[' '~/' attr(data-user) '@' attr(data-host) '] $';
+  }
+
+  .command-line-prompt > span[data-prompt]:before {
+    content: attr(data-prompt);
+  }
+
   .gatsby-highlight pre[class*='language-'] {
     background-color: transparent;
     margin: 0;
@@ -60,6 +78,10 @@ const PrismStyles = css`
     float: left; /* 1 */
     min-width: 100%; /* 2 */
     padding-top: 2em;
+  }
+
+  .gatsby-highlight pre[class*='language-'].line-numbers {
+    padding-left: 3.8em;
   }
 
   /* File names */
@@ -129,6 +151,9 @@ const PrismStyles = css`
   }
   .gatsby-highlight pre[class='language-shell']::before {
     content: 'shell';
+  }
+  .gatsby-highlight pre[class='language-ruby']::before {
+    content: 'ruby';
   }
   .gatsby-highlight pre[class='language-sh']::before {
     content: 'sh';
