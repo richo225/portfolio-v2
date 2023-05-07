@@ -256,7 +256,7 @@ end
 
 Here we take the response from the ChatGPT API, pull out the value at the `"content"` key and print it out to the terminal. Now is a good time to test out this code by running the ruby file within the lib directory via `ruby lib/<YOUR_GEM_NAME>.rb`. You can see the full response printed out below as well as the content returned:
 
-![Running the program](./ruby_test.png)
+![Running the program](./gem_in_action.png)
 
 Again, don't forget to commit this feature:
 
