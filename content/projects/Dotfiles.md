@@ -2,6 +2,7 @@
 date: '2022-01-27'
 title: 'Dotfiles'
 github: 'https://github.com/richo225/dotfiles'
+external: 'https://github.com/richo225/dotfiles'
 tech:
   - Shell
 showInProjects: true

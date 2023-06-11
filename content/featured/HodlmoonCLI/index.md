@@ -1,5 +1,5 @@
 ---
-date: '2'
+date: '3'
 title: 'Hodlmoon CLI'
 cover: './hodlmooncli.png'
 github: 'https://github.com/richo225/hodlmoon'

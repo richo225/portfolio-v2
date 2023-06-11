@@ -127,7 +127,6 @@ const About = () => {
   const skills = [
     'Ruby',
     'Rust',
-    'Go',
     'Docker',
     'Kubernetes',
     'JavaScript (ES6+)',
@@ -144,7 +143,7 @@ const About = () => {
           <div>
             <p>
               Hello! My name is Richard and I'm a graduated nerouscientist turned software engineer
-              with 6 years experience.
+              with over 5 years experience.
             </p>
 
             <p>
@@ -158,11 +157,11 @@ const About = () => {
             </p>
 
             <p>
-              I'm currently experimenting with smart contracts in Solidity and building tooling with
-              Go and Rust.
+              I've spent most of my career using RoR and React but am currently building{' '}
+              <a href="https://crates.io/crates/octopus-cli/">a trading engine</a> and{' '}
+              <a href="https://github.com/richo225/unixr/">other tooling</a> in Rust. Here are a few
+              technologies I have experience with:
             </p>
-
-            <p>Here are a few technologies I’ve been working with recently:</p>
           </div>
 
           <ul className="skills-list">

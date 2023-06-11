@@ -18,6 +18,15 @@ const StyledMainContainer = styled.main`
     width: 100%;
     margin-top: 20px;
   }
+
+  .tags-link {
+    font-family: var(--font-mono);
+    margin-top: 20px;
+    font-size: var(--fz-xxs);
+    &:after {
+      bottom: 0.1em;
+    }
+  }
 `;
 const StyledGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
@@ -144,6 +153,10 @@ const BlogPage = ({ location, data }) => {
         <header>
           <h1 className="big-heading">Blog</h1>
           <p className="subtitle">Some articles that I have written</p>
+
+          <Link to="/blog/tags/" className="inline-link tags-link">
+            View all tags
+          </Link>
         </header>
 
         <StyledGrid>
