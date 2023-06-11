@@ -2,6 +2,7 @@
 date: '2015-01-01'
 title: 'Bluetooth Robot'
 github: 'https://github.com/richo225/bluetooth-robot'
+external: 'https://github.com/richo225/bluetooth-robot'
 tech:
   - NativeScript
   - Angular2

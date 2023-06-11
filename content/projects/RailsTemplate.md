@@ -2,6 +2,7 @@
 date: '2019-02-19'
 title: 'Rails 6.1 JSON template'
 github: 'https://github.com/richo225/api_template'
+external: 'https://github.com/richo225/api_template'
 tech:
   - Ruby
   - CircleCI

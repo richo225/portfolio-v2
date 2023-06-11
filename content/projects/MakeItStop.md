@@ -2,6 +2,7 @@
 date: '2016-09-5'
 title: 'Make It Stop! Alarm Clock'
 github: 'https://github.com/MakeItStop/task-based-alarm'
+external: 'https://github.com/MakeItStop/task-based-alarm'
 tech:
   - NativeScript
   - Angular2
