@@ -7,7 +7,7 @@ tech:
   - Javascript
   - HTML
   - CSS
-showInProjects: true
+showInProjects: false
 ---
 
 My first very basic portfolio website from 2016. My skillset has improved greatly since then :)
