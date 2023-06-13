@@ -3,7 +3,7 @@ date: '2'
 title: 'Hodlmoon'
 cover: './hodlmoon.png'
 github: 'https://github.com/richo225/hodlreact'
-external: 'https://hodlreact-production.up.railway.app/'
+external: 'https://hodlmoon.up.railway.app/'
 tech:
   - ReactJS
   - Redux
