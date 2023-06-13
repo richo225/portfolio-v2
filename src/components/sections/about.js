@@ -142,7 +142,7 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Richard and I'm a graduated nerouscientist turned software engineer
+              Hello! My name is Richard and I'm a graduated neuroscientist turned software engineer
               with over 5 years experience.
             </p>
 
