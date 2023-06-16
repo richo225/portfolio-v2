@@ -3,7 +3,7 @@ date: '2022-09-01'
 title: 'Lead Instructor'
 company: 'LeWagon'
 location: 'Singapore'
-range: 'September 2022 - Present'
+range: 'September 2022 - April 2023'
 url: 'https://www.lewagon.com/singapore'
 ---
 
