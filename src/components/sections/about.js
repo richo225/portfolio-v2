@@ -124,15 +124,7 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = [
-    'Ruby',
-    'Rust',
-    'Docker',
-    'Kubernetes',
-    'JavaScript (ES6+)',
-    'React',
-    'React Native',
-  ];
+  const skills = ['Ruby', 'Docker', 'Rust', 'Kubernetes', 'RabbitMQ', 'AWS', 'GraphQL'];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -147,11 +139,11 @@ const About = () => {
             </p>
 
             <p>
-              Fast-forward to today, and I’ve had the privilege of working at{' '}
-              <a href="https://www.babylonhealth.com/">a healthtech giant</a> and{' '}
-              <a href="https://www.paveapp.com/">a fintech start-up</a>. My main focus these days is
-              lecturing full-time at <a href="https://www.lewagon.com/singapore">LeWagon</a> in
-              Singapore, leading students to build amazing products such as a{' '}
+              Fast-forward to today, and I’ve had the privilege of working at amazing startups in
+              the <a href="https://www.babylonhealth.com/">healthtech</a> and{' '}
+              <a href="https://www.paveapp.com/">fintech</a> industries. I have also lectured
+              full-time at <a href="https://www.lewagon.com/singapore">LeWagon</a> in Singapore,
+              leading students to build amazing products such as a{' '}
               <a href="https://www.soundstate.live/">spotify app using AI</a> and a{' '}
               <a href="https://catch-app.onrender.com/">pokemon go clone for NFT's</a>.
             </p>
