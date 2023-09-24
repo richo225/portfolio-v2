@@ -66,13 +66,9 @@ const Hero = () => {
   const four = (
     <>
       <p>
-        I’m a software engineer specializing in building exceptional digital experiences and scaling
-        early stage startups. Currently, I’m teaching students the skills to get their dream tech
-        jobs at{' '}
-        <a href="https://www.lewagon.com/singapore/" target="_blank" rel="noreferrer">
-          LeWagon
-        </a>
-        .
+        I’m a backend engineer specializing in building exceptional digital experiences in FinTech.
+        Currently, I'm helping users manage their spending via an{' '}
+        <a href="https://web.meetcleo.com/">AI financial assistant called Cleo</a>.
       </p>
     </>
   );

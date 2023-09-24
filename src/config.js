@@ -3,8 +3,16 @@ module.exports = {
 
   socialMedia: [
     {
+      name: 'Folder',
+      url: '/Richard-Bates-CV.pdf',
+    },
+    {
       name: 'GitHub',
       url: 'https://github.com/richo225',
+    },
+    {
+      name: 'Linkedin',
+      url: 'https://www.linkedin.com/in/richard-bates',
     },
     {
       name: 'Instagram',
@@ -13,10 +21,6 @@ module.exports = {
     {
       name: 'Twitter',
       url: 'https://twitter.com/@Meister_Bates',
-    },
-    {
-      name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/richard-bates',
     },
   ],
 
