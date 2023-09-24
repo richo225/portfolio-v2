@@ -3,8 +3,7 @@ const config = require('./src/config');
 module.exports = {
   siteMetadata: {
     title: 'Richard Bates',
-    description:
-      'Richard Bates is a backend engineer with 6 years experience in HealthTech, FinTech and teaching',
+    description: 'Backend engineer with over 5 years experience in FinTech',
     siteUrl: 'https://richardbates.dev', // No trailing slash allowed!
     image: '/og.png', // Path to your image you placed in the 'static' folder
     twitterUsername: '@Meister_Bates',
