@@ -11,4 +11,6 @@ AI assistant mobile app dedicated to personal finance, from building credit to s
 
 ####
 
-- Backend engineer on the chat team responsible for building tooling for ChatGPT prompt annotation and evaluation.
+- Backend engineer on the chat platform team.
+- Responsible for building tooling for ChatGPT prompt annotation and evaluation.
+- Led the design and development of Rails API's integrating with ML models that classify user intents.
