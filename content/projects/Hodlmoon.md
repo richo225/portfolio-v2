@@ -1,7 +1,6 @@
 ---
-date: '2'
+date: '2022-06-01'
 title: 'Hodlmoon'
-cover: './hodlmoon.png'
 github: 'https://github.com/richo225/hodlreact'
 external: 'https://hodlmoon.up.railway.app/'
 tech:

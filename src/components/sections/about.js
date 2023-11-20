@@ -124,7 +124,7 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['Ruby', 'Docker', 'Rust', 'Kubernetes', 'RabbitMQ', 'AWS', 'GraphQL'];
+  const skills = ['Ruby', 'Docker', 'Golang', 'AWS', 'Typescript', 'Kafka', 'Rust', 'GraphQL'];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -134,8 +134,8 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Richard and I'm a graduated neuroscientist turned software engineer
-              with over 5 years experience.
+              Hello! My name is Rich and I'm a neuroscience grad turned software engineer with over
+              5 years experience.
             </p>
 
             <p>
@@ -149,10 +149,10 @@ const About = () => {
             </p>
 
             <p>
-              I've spent most of my career using RoR and React but am currently building{' '}
-              <a href="https://crates.io/crates/octopus-cli/">a trading engine</a> and{' '}
-              <a href="https://github.com/richo225/unixr/">other tooling</a> in Rust. Here are a few
-              technologies I have experience with:
+              I've spent most of my career using RoR and React but have recently built{' '}
+              <a href="https://octgopus.up.railway.app/">a trading engine</a> in Golang and{' '}
+              <a href="https://github.com/richo225/octopus/">other projects</a> in Rust. Here are a
+              few technologies I have experience with:
             </p>
           </div>
 
