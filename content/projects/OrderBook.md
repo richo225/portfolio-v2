@@ -6,6 +6,7 @@ external: 'https://github.com/richo225/orderbook'
 tech:
   - React
   - Typescript
+  - Styled Components
 showInProjects: true
 ---
 
